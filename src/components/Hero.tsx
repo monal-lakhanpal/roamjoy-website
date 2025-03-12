@@ -1,9 +1,11 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, MapPin, Calendar, Users } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import LocationSearch from './LocationSearch';
+import DateRangePicker from './DateRangePicker';
+import GuestSelector from './GuestSelector';
 
 interface HeroImage {
   url: string;
@@ -32,8 +34,22 @@ const heroImages: HeroImage[] = [
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [imagesLoaded, setImagesLoaded] = useState([false, false, false]);
 
   useEffect(() => {
+    // Preload all images
+    heroImages.forEach((image, index) => {
+      const img = new Image();
+      img.src = image.url;
+      img.onload = () => {
+        setImagesLoaded(prev => {
+          const newState = [...prev];
+          newState[index] = true;
+          return newState;
+        });
+      };
+    });
+
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 6000);
@@ -121,33 +137,15 @@ const Hero = () => {
             variants={itemVariants}
           >
             <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4">
-              <div className="relative flex-grow">
-                <MapPin className="absolute left-3 top-3 h-5 w-5 text-white/70" />
-                <Input 
-                  type="text" 
-                  placeholder="Where are you going?" 
-                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/70"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
+              <LocationSearch 
+                value={searchQuery}
+                onChange={setSearchQuery}
+                className="flex-grow"
+              />
               
               <div className="flex gap-2">
-                <Button 
-                  variant="outline" 
-                  className="flex-grow md:flex-grow-0 bg-white/10 border-white/20 text-white hover:bg-white/20"
-                >
-                  <Calendar className="mr-2 h-4 w-4" />
-                  <span>Dates</span>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex-grow md:flex-grow-0 bg-white/10 border-white/20 text-white hover:bg-white/20"
-                >
-                  <Users className="mr-2 h-4 w-4" />
-                  <span>Guests</span>
-                </Button>
+                <DateRangePicker />
+                <GuestSelector />
                 
                 <Button type="submit" className="zostel-btn-primary">
                   <Search className="mr-2 h-4 w-4" />

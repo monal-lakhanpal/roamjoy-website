@@ -46,7 +46,10 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="z-50">
+          <Link to="/" className="z-50 flex items-center">
+            <div className="w-10 h-10 bg-zostel-teal rounded-full flex items-center justify-center mr-2">
+              <span className="text-white font-bold text-lg">Z</span>
+            </div>
             <h1 className="text-2xl md:text-3xl font-bold text-zostel-navy dark:text-zostel-teal">
               ZOSTEL
             </h1>
