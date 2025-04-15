@@ -61,14 +61,7 @@ const Footer = () => {
                   Destinations
                 </a>
               </li>
-              <li>
-                <a 
-                  href="#" 
-                  className="text-gray-300 hover:text-zostel-teal transition-colors inline-block py-1"
-                >
-                  Experiences
-                </a>
-              </li>
+             
               <li>
                 <a 
                   href="#" 
@@ -77,14 +70,7 @@ const Footer = () => {
                   About Us
                 </a>
               </li>
-              <li>
-                <a 
-                  href="#" 
-                  className="text-gray-300 hover:text-zostel-teal transition-colors inline-block py-1"
-                >
-                  Blog
-                </a>
-              </li>
+             
               <li>
                 <a 
                   href="#" 
