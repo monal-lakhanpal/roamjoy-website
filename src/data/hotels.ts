@@ -101,9 +101,10 @@ export const hotels: Hotel[] = [
     location: "Laxman Jhula, Rishikesh",
     description: "Perched on the banks of the Ganges, Holidayz Rishikesh offers a perfect mix of spirituality and adventure. Enjoy yoga sessions, white water rafting, and the serene beauty of the Himalayan foothills.",
     images: [
-      "https://images.unsplash.com/photo-1584732200355-486c3f73a7cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
-      "https://images.unsplash.com/photo-1591018653367-7fefc1a32d82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80"
+      "https://images.unsplash.com/photo-1591018653367-7fefc1a32d82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80",
+      "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     ],
     rating: 4.6,
     reviews: 154,
@@ -175,9 +176,10 @@ export const hotels: Hotel[] = [
     location: "Assi Ghat, Varanasi",
     description: "Immerse yourself in the spiritual heart of India at Holidayz Varanasi. Our riverside hostel offers panoramic views of the Ganges and is a perfect base to explore the ancient city's mystical charm.",
     images: [
-      "https://images.unsplash.com/photo-1561361058-c12e09083d88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1566138884885-9c5762b4f4ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1584360459531-24a5d0fdf10d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+      "https://images.unsplash.com/photo-1584360459531-24a5d0fdf10d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+      "https://images.unsplash.com/photo-1627894006066-b9384f8a13a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     ],
     rating: 4.4,
     reviews: 98,

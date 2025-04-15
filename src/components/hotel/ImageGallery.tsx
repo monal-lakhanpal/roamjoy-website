@@ -1,5 +1,12 @@
 
 import { useState } from 'react';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface ImageGalleryProps {
   images: string[];
@@ -19,10 +26,14 @@ const ImageGallery = ({ images, alt }: ImageGalleryProps) => {
 
   return (
     <div className="relative h-[50vh] bg-gray-200 overflow-hidden">
+      {/* Main Image Display */}
       <img 
         src={images[currentImageIndex]} 
         alt={alt} 
         className="w-full h-full object-cover"
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80";
+        }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
       
