@@ -9,21 +9,6 @@ interface Location {
   state: string;
 }
 
-const locations: Location[] = [
-  { id: "1", name: "Manali", state: "Himachal Pradesh" },
-  { id: "2", name: "Goa", state: "Goa" },
-  { id: "3", name: "Jaipur", state: "Rajasthan" },
-  { id: "4", name: "Rishikesh", state: "Uttarakhand" },
-  { id: "5", name: "Udaipur", state: "Rajasthan" },
-  { id: "6", name: "Varanasi", state: "Uttar Pradesh" },
-  { id: "7", name: "Mumbai", state: "Maharashtra" },
-  { id: "8", name: "Kochi", state: "Kerala" },
-  { id: "9", name: "Shimla", state: "Himachal Pradesh" },
-  { id: "10", name: "Darjeeling", state: "West Bengal" },
-  { id: "11", name: "Bangalore", state: "Karnataka" },
-  { id: "12", name: "Delhi", state: "Delhi" }
-];
-
 interface LocationSearchProps {
   value: string;
   onChange: (value: string) => void;
@@ -34,7 +19,41 @@ const LocationSearch = ({ value, onChange, className }: LocationSearchProps) => 
   const [query, setQuery] = useState(value);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [filteredLocations, setFilteredLocations] = useState<Location[]>([]);
+  const [locations, setLocations] = useState<Location[]>([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Fetch locations from CDN
+    fetch('https://cdn.jsdelivr.net/gh/nshntarora/Indian-Cities-JSON@master/cities.json')
+      .then(response => response.json())
+      .then(data => {
+        // Transform data into our Location format
+        const formattedLocations = data.map((city: any, index: number) => ({
+          id: index.toString(),
+          name: city.name,
+          state: city.state
+        }));
+        setLocations(formattedLocations);
+      })
+      .catch(error => {
+        console.error('Error fetching cities:', error);
+        // Fallback to local data if CDN fails
+        setLocations([
+          { id: "1", name: "Manali", state: "Himachal Pradesh" },
+          { id: "2", name: "Goa", state: "Goa" },
+          { id: "3", name: "Jaipur", state: "Rajasthan" },
+          { id: "4", name: "Rishikesh", state: "Uttarakhand" },
+          { id: "5", name: "Udaipur", state: "Rajasthan" },
+          { id: "6", name: "Varanasi", state: "Uttar Pradesh" },
+          { id: "7", name: "Mumbai", state: "Maharashtra" },
+          { id: "8", name: "Kochi", state: "Kerala" },
+          { id: "9", name: "Shimla", state: "Himachal Pradesh" },
+          { id: "10", name: "Darjeeling", state: "West Bengal" },
+          { id: "11", name: "Bangalore", state: "Karnataka" },
+          { id: "12", name: "Delhi", state: "Delhi" }
+        ]);
+      });
+  }, []);
 
   useEffect(() => {
     // Filter locations based on query
@@ -46,9 +65,9 @@ const LocationSearch = ({ value, onChange, className }: LocationSearchProps) => 
           location.name.toLowerCase().includes(query.toLowerCase()) ||
           location.state.toLowerCase().includes(query.toLowerCase())
       );
-      setFilteredLocations(filtered);
+      setFilteredLocations(filtered.slice(0, 10)); // Limit to 10 results for performance
     }
-  }, [query]);
+  }, [query, locations]);
 
   useEffect(() => {
     // Handle clicks outside the component to close suggestions

@@ -11,29 +11,29 @@ const teamMembers = [
     id: 1,
     name: 'Dharmveer Singh',
     role: 'Founder & CEO',
-    image: '/images/team/founder.jpg',
-    bio: 'Passionate traveler and entrepreneur who founded Zostel with a vision to revolutionize the backpacking experience in India.'
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+    bio: 'Passionate traveler and entrepreneur who founded Holidayz with a vision to revolutionize the backpacking experience in India.'
   },
   {
     id: 2,
     name: 'Akhil Malik',
     role: 'Co-Founder & COO',
-    image: '/images/team/coo.jpg',
-    bio: 'Adventure enthusiast and business strategist who manages the day-to-day operations and expansion of Zostel across India.'
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    bio: 'Adventure enthusiast and business strategist who manages the day-to-day operations and expansion of Holidayz across India.'
   },
   {
     id: 3,
     name: 'Paavan Nanda',
     role: 'Co-Founder & CTO',
-    image: '/images/team/cto.jpg',
-    bio: 'Tech innovator who leads Zostel\'s digital initiatives and ensures seamless guest experiences across all platforms.'
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+    bio: 'Tech innovator who leads Holidayz\'s digital initiatives and ensures seamless guest experiences across all platforms.'
   },
   {
     id: 4,
     name: 'Siddharth Janghu',
     role: 'Head of Experiences',
-    image: '/images/team/experiences.jpg',
-    bio: 'Former tour guide who curates unique local experiences for Zostel guests across all destinations.'
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+    bio: 'Former tour guide who curates unique local experiences for Holidayz guests across all destinations.'
   }
 ];
 
@@ -62,7 +62,7 @@ const AboutPage = () => {
               className="text-center"
             >
               <h1 className="text-4xl md:text-5xl font-bold text-zostel-navy dark:text-white mb-4">
-                About Zostel
+                About Holidayz
               </h1>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 India's first and largest chain of backpacker hostels, 
@@ -83,7 +83,7 @@ const AboutPage = () => {
               >
                 <h2 className="text-3xl font-bold text-zostel-navy dark:text-zostel-teal mb-6">Our Story</h2>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Founded in 2013 by a group of IIM-A and IIT alumni, Zostel began with a simple idea: 
+                  Founded in 2013 by a group of IIM-A and IIT alumni, Holidayz began with a simple idea: 
                   to provide affordable, clean, and social accommodation for young travelers exploring India.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
@@ -92,7 +92,7 @@ const AboutPage = () => {
                   community building, and creating authentic experiences.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Today, Zostel continues to redefine budget travel by offering not just a place to stay,
+                  Today, Holidayz continues to redefine budget travel by offering not just a place to stay,
                   but a platform to connect, explore, and create lasting memories.
                 </p>
               </motion.div>
@@ -104,12 +104,9 @@ const AboutPage = () => {
                 className="relative h-80 md:h-96 overflow-hidden rounded-xl shadow-lg"
               >
                 <img 
-                  src="/images/about/zostel-story.jpg" 
-                  alt="Zostel Story" 
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Holidayz Story" 
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/placeholder.svg";
-                  }}
                 />
               </motion.div>
             </div>
@@ -127,7 +124,7 @@ const AboutPage = () => {
             >
               <h2 className="text-3xl font-bold text-zostel-navy dark:text-zostel-teal mb-4">Our Values</h2>
               <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                The principles that guide everything we do at Zostel.
+                The principles that guide everything we do at Holidayz.
               </p>
             </motion.div>
             
@@ -200,7 +197,7 @@ const AboutPage = () => {
             >
               <h2 className="text-3xl font-bold text-zostel-navy dark:text-zostel-teal mb-4">Meet Our Team</h2>
               <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                The passionate individuals behind Zostel who make your travel experiences unforgettable.
+                The passionate individuals behind Holidayz who make your travel experiences unforgettable.
               </p>
             </motion.div>
             
@@ -215,7 +212,7 @@ const AboutPage = () => {
                 >
                   <div className="h-64 overflow-hidden">
                     <img 
-                      src={member.image || "/placeholder.svg"} 
+                      src={member.image} 
                       alt={member.name}
                       className="w-full h-full object-cover"
                       onError={(e) => {

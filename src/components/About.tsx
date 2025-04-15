@@ -2,10 +2,13 @@
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const aboutImage = 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
 
 const About = () => {
+  const navigate = useNavigate();
+  
   const features = [
     "Community-focused travel experiences",
     "Budget-friendly accommodation",
@@ -33,6 +36,10 @@ const About = () => {
     visible: { scale: 1, opacity: 1, transition: { duration: 1.2 } }
   };
 
+  const handleLearnMore = () => {
+    navigate('/about');
+  };
+
   return (
     <section className="py-20 bg-gray-50 dark:bg-zostel-charcoal/30">
       <div className="container mx-auto px-4">
@@ -48,7 +55,7 @@ const About = () => {
             <div className="rounded-xl overflow-hidden shadow-xl">
               <img 
                 src={aboutImage} 
-                alt="Zostel Community" 
+                alt="Holidayz Community" 
                 className="w-full h-auto object-cover"
               />
             </div>
@@ -83,7 +90,7 @@ const About = () => {
               className="text-zostel-teal font-medium text-sm uppercase tracking-wider mb-2 inline-block"
               variants={itemVariants}
             >
-              About Zostel
+              About Holidayz
             </motion.span>
             
             <motion.h2 
@@ -98,7 +105,7 @@ const About = () => {
               className="text-gray-700 dark:text-gray-300 mb-6 text-lg"
               variants={itemVariants}
             >
-              Founded in 2013, Zostel revolutionized the way India travels. We're not just a place to stay; we're a community of like-minded travelers seeking authentic experiences, meaningful connections, and affordable adventures.
+              Founded in 2013, Holidayz revolutionized the way India travels. We're not just a place to stay; we're a community of like-minded travelers seeking authentic experiences, meaningful connections, and affordable adventures.
             </motion.p>
             
             <motion.p 
@@ -125,7 +132,10 @@ const About = () => {
             </motion.div>
             
             <motion.div variants={itemVariants}>
-              <Button className="zostel-btn-primary">
+              <Button 
+                className="zostel-btn-primary"
+                onClick={handleLearnMore}
+              >
                 Learn More About Us
               </Button>
             </motion.div>
