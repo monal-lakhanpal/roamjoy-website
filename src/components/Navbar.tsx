@@ -66,9 +66,11 @@ const Navbar = () => {
             <Link to="/about" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
               About
             </Link>
-            <Link to="/profile" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
-              Profile
-            </Link>
+            {user && (
+              <Link to="/profile" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
+                Profile
+              </Link>
+            )}
             
             {user ? (
               <div className="flex items-center space-x-4">
@@ -144,13 +146,15 @@ const Navbar = () => {
             >
               About
             </Link>
-            <Link 
-              to="/profile" 
-              className="text-xl text-zostel-navy dark:text-white hover:text-zostel-teal transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Profile
-            </Link>
+            {user && (
+              <Link 
+                to="/profile" 
+                className="text-xl text-zostel-navy dark:text-white hover:text-zostel-teal transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Profile
+              </Link>
+            )}
             
             {user ? (
               <div className="flex flex-col items-center space-y-4 pt-4">

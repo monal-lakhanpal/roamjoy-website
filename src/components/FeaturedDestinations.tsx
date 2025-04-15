@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -35,7 +34,7 @@ const destinations = [
     id: '4',
     name: 'Holidayz Rishikesh',
     location: 'Rishikesh, Uttarakhand',
-    image: 'https://images.unsplash.com/photo-1545023924-3878a5a6548c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
+    image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     price: 899,
     rating: 4.6
   },
@@ -51,7 +50,7 @@ const destinations = [
     id: '6',
     name: 'Holidayz Varanasi',
     location: 'Varanasi, Uttar Pradesh',
-    image: 'https://images.unsplash.com/photo-1621996659546-2f4e964d891c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     price: 849,
     rating: 4.4
   },
@@ -73,16 +72,16 @@ const destinations = [
   }
 ];
 
-// Map destination cards to hotel IDs
+// Map destination cards to hotel IDs - now each destination has its proper mapping
 const destinationToHotelMap: Record<string, number> = {
   '1': 2, // Manali
   '2': 1, // Goa
-  '3': 3, // Jaipur (would need to be added to hotels data)
-  '4': 4, // Rishikesh (would need to be added to hotels data)
-  '5': 5, // Udaipur (would need to be added to hotels data)
-  '6': 6, // Varanasi (would need to be added to hotels data)
-  '7': 7, // Mumbai (would need to be added to hotels data)
-  '8': 8  // Kerala (would need to be added to hotels data)
+  '3': 4, // Jaipur 
+  '4': 3, // Rishikesh
+  '5': 6, // Udaipur
+  '6': 5, // Varanasi
+  '7': 7, // Mumbai
+  '8': 8  // Kerala
 };
 
 const FeaturedDestinations = () => {
