@@ -5,7 +5,7 @@ import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LocationSearch from './LocationSearch';
 import DateRangePicker from './DateRangePicker';
-import GuestSelector from './GuestSelector';
+import { useNavigate } from 'react-router-dom';
 
 interface HeroImage {
   url: string;
@@ -15,17 +15,17 @@ interface HeroImage {
 
 const heroImages: HeroImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1571536802807-30aa8c2b3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    url: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     location: 'Manali, India',
     caption: 'Experience mountain magic'
   },
   {
-    url: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    url: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
     location: 'Goa, India',
     caption: 'Beach vibes and sunset stories'
   },
   {
-    url: 'https://images.unsplash.com/photo-1544014106-27019c15cecd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    url: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     location: 'Jaipur, India',
     caption: 'Discover royal heritage'
   }
@@ -34,7 +34,9 @@ const heroImages: HeroImage[] = [
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [imagesLoaded, setImagesLoaded] = useState([false, false, false]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Preload all images
@@ -59,8 +61,18 @@ const Hero = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
-    // In a real app, this would redirect to search results
+    
+    // Extract location name from searchQuery (which might be "Location, State")
+    const locationName = searchQuery.split(',')[0].trim().toLowerCase();
+    
+    // Store search parameters in sessionStorage for use on destination page
+    sessionStorage.setItem('searchLocation', locationName);
+    if (selectedDate) {
+      sessionStorage.setItem('searchDate', selectedDate.toISOString());
+    }
+    
+    // Navigate to the appropriate destination page
+    navigate(`/destinations`);
   };
 
   const containerVariants = {
@@ -144,8 +156,10 @@ const Hero = () => {
               />
               
               <div className="flex gap-2">
-                <DateRangePicker />
-                <GuestSelector />
+                <DateRangePicker 
+                  selectedDate={selectedDate}
+                  onDateChange={setSelectedDate}
+                />
                 
                 <Button type="submit" className="zostel-btn-primary">
                   <Search className="mr-2 h-4 w-4" />

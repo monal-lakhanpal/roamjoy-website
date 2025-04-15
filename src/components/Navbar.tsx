@@ -48,10 +48,10 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="z-50 flex items-center">
             <div className="w-10 h-10 bg-zostel-teal rounded-full flex items-center justify-center mr-2">
-              <span className="text-white font-bold text-lg">Z</span>
+              <span className="text-white font-bold text-lg">H</span>
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-zostel-navy dark:text-zostel-teal">
-              ZOSTEL
+              HOLIDAYZ
             </h1>
           </Link>
 
@@ -63,14 +63,11 @@ const Navbar = () => {
             <Link to="/destinations" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
               Destinations
             </Link>
-            <Link to="/experiences" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
-              Experiences
-            </Link>
             <Link to="/about" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
               About
             </Link>
-            <Link to="/blog" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
-              Blog
+            <Link to="/profile" className="underline-animation text-zostel-navy dark:text-white font-medium hover:text-zostel-teal">
+              Profile
             </Link>
             
             {user ? (
@@ -141,13 +138,6 @@ const Navbar = () => {
               Destinations
             </Link>
             <Link 
-              to="/experiences" 
-              className="text-xl text-zostel-navy dark:text-white hover:text-zostel-teal transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Experiences
-            </Link>
-            <Link 
               to="/about" 
               className="text-xl text-zostel-navy dark:text-white hover:text-zostel-teal transition-colors"
               onClick={() => setIsOpen(false)}
@@ -155,11 +145,11 @@ const Navbar = () => {
               About
             </Link>
             <Link 
-              to="/blog" 
+              to="/profile" 
               className="text-xl text-zostel-navy dark:text-white hover:text-zostel-teal transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Blog
+              Profile
             </Link>
             
             {user ? (

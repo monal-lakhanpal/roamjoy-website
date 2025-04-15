@@ -1,17 +1,19 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { AuthProvider } from '@/hooks/useAuth';
 import { initAnimations } from '@/utils/animations';
+import { toast } from "sonner";
 
 const destinations = [
   {
     id: 1,
     name: 'Goa',
     location: 'Palolem Beach',
-    image: '/images/destinations/goa.jpg',
+    image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
     description: 'Experience the perfect blend of beach vibes and cultural richness in Goa.',
     price: 'Starts at ₹549/night'
   },
@@ -19,7 +21,7 @@ const destinations = [
     id: 2,
     name: 'Manali',
     location: 'Old Manali',
-    image: '/images/destinations/manali.jpg',
+    image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     description: 'Discover the serene beauty of the mountains and adventure sports in Manali.',
     price: 'Starts at ₹599/night'
   },
@@ -27,7 +29,7 @@ const destinations = [
     id: 3,
     name: 'Rishikesh',
     location: 'Laxman Jhula',
-    image: '/images/destinations/rishikesh.jpg',
+    image: 'https://images.unsplash.com/photo-1545023924-3878a5a6548c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
     description: 'Find spiritual connection and adventure in the yoga capital of the world.',
     price: 'Starts at ₹499/night'
   },
@@ -35,7 +37,7 @@ const destinations = [
     id: 4,
     name: 'Jaipur',
     location: 'Old City',
-    image: '/images/destinations/jaipur.jpg',
+    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     description: 'Explore the rich heritage and vibrant culture of the Pink City.',
     price: 'Starts at ₹649/night'
   },
@@ -43,7 +45,7 @@ const destinations = [
     id: 5,
     name: 'Varanasi',
     location: 'Assi Ghat',
-    image: '/images/destinations/varanasi.jpg',
+    image: 'https://images.unsplash.com/photo-1621996659546-2f4e964d891c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     description: 'Experience the spiritual heart of India on the banks of the Ganges.',
     price: 'Starts at ₹449/night'
   },
@@ -51,7 +53,7 @@ const destinations = [
     id: 6,
     name: 'Udaipur',
     location: 'Lake Pichola',
-    image: '/images/destinations/udaipur.jpg', 
+    image: 'https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80', 
     description: 'Discover the romantic city of lakes and palaces in Rajasthan.',
     price: 'Starts at ₹699/night'
   },
@@ -59,7 +61,7 @@ const destinations = [
     id: 7,
     name: 'Coorg',
     location: 'Madikeri',
-    image: '/images/destinations/coorg.jpg',
+    image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
     description: 'Retreat to the coffee plantations and misty hills of Karnataka.',
     price: 'Starts at ₹749/night'
   },
@@ -67,21 +69,48 @@ const destinations = [
     id: 8,
     name: 'Spiti Valley',
     location: 'Kaza',
-    image: '/images/destinations/spiti.jpg',
+    image: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     description: 'Adventure through the cold desert mountain valley of Himachal Pradesh.',
     price: 'Starts at ₹799/night'
   }
 ];
 
 const Destinations = () => {
+  const navigate = useNavigate();
+  const [filteredDestinations, setFilteredDestinations] = useState(destinations);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     initAnimations();
+    
+    // Check if there's a search from the home page
+    const searchLocation = sessionStorage.getItem('searchLocation');
+    if (searchLocation) {
+      // Filter destinations based on the search query
+      const filtered = destinations.filter(dest => 
+        dest.name.toLowerCase().includes(searchLocation) || 
+        dest.location.toLowerCase().includes(searchLocation)
+      );
+      
+      if (filtered.length > 0) {
+        setFilteredDestinations(filtered);
+        toast.success(`Found ${filtered.length} destinations matching "${searchLocation}"`);
+      } else {
+        toast.info(`No destinations found for "${searchLocation}". Showing all options.`);
+      }
+      
+      // Clear search parameters after using them
+      sessionStorage.removeItem('searchLocation');
+    }
     
     return () => {
       // Cleanup if needed
     };
   }, []);
+
+  const handleViewDetails = (id: number) => {
+    navigate(`/hotel/${id}`);
+  };
 
   return (
     <AuthProvider>
@@ -101,7 +130,7 @@ const Destinations = () => {
                 Our Destinations
               </h1>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Discover unique stays at stunning locations across India. Book your next adventure with Zostel.
+                Discover unique stays at stunning locations across India. Book your next adventure with Holidayz.
               </p>
             </motion.div>
           </div>
@@ -111,7 +140,7 @@ const Destinations = () => {
         <section className="py-12 bg-white dark:bg-zostel-charcoal">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {destinations.map((destination, index) => (
+              {filteredDestinations.map((destination, index) => (
                 <motion.div
                   key={destination.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -121,7 +150,7 @@ const Destinations = () => {
                 >
                   <div className="relative overflow-hidden rounded-t-xl h-48">
                     <img 
-                      src={destination.image || "/placeholder.svg"} 
+                      src={destination.image} 
                       alt={destination.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       onError={(e) => {
@@ -138,7 +167,12 @@ const Destinations = () => {
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">{destination.description}</p>
                     <div className="flex justify-between items-center">
                       <span className="text-zostel-navy dark:text-zostel-teal font-semibold">{destination.price}</span>
-                      <button className="zostel-btn-outline text-sm py-1 px-3">View Details</button>
+                      <button 
+                        className="zostel-btn-outline text-sm py-1 px-3"
+                        onClick={() => handleViewDetails(destination.id)}
+                      >
+                        View Details
+                      </button>
                     </div>
                   </div>
                 </motion.div>
