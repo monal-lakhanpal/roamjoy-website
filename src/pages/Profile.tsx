@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { User, Camera, Edit, Trash } from 'lucide-react';
+import { User, Camera, Edit } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -37,6 +36,12 @@ const ProfilePage = () => {
     if (user) {
       setName(user.name);
       
+      // Load saved profile image from localStorage
+      const savedProfileImage = localStorage.getItem('userProfileImage');
+      if (savedProfileImage) {
+        setProfileImage(savedProfileImage);
+      }
+      
       // Mock bookings data
       const storedBookings = localStorage.getItem('userBookings');
       if (storedBookings) {
@@ -70,8 +75,10 @@ const ProfilePage = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setProfileImage(reader.result as string);
-        localStorage.setItem('userProfileImage', reader.result as string);
+        const imageData = reader.result as string;
+        setProfileImage(imageData);
+        localStorage.setItem('userProfileImage', imageData);
+        toast.success("Profile image updated successfully");
       };
       reader.readAsDataURL(file);
     }
@@ -80,6 +87,8 @@ const ProfilePage = () => {
   const handleSaveProfile = () => {
     // In a real app, this would send data to the server
     if (name.trim()) {
+      // Save the name to localStorage (for persistence)
+      localStorage.setItem('userName', name);
       toast.success("Profile updated successfully");
       setIsEditing(false);
     } else {

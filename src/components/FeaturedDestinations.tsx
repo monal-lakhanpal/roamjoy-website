@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -95,9 +94,7 @@ const FeaturedDestinations = () => {
   };
 
   const handleCardClick = (destId: string) => {
-    // Convert string ID to number for hotel detail page - fixed link mapping
-    const hotelId = parseInt(destId);
-    navigate(`/hotel/${hotelId}`);
+    navigate(`/hotel/${destId}`);
   };
 
   const containerVariants = {

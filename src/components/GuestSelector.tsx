@@ -34,14 +34,14 @@ const GuestSelector = ({ className }: GuestSelectorProps) => {
           <span>{totalGuests} {totalGuests === 1 ? 'Guest' : 'Guests'}</span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 p-0" align="start">
+      <PopoverContent className="w-80 p-0 bg-white dark:bg-zostel-navy/90 dark:text-white" align="start">
         <div className="p-4 space-y-4">
           <h3 className="font-medium">Guests</h3>
           
           <div className="flex items-center justify-between">
             <div>
               <p className="font-medium">Adults</p>
-              <p className="text-sm text-gray-500">Ages 13+</p>
+              <p className="text-sm text-gray-500 dark:text-gray-300">Ages 13+</p>
             </div>
             <div className="flex items-center space-x-3">
               <Button 
@@ -69,7 +69,7 @@ const GuestSelector = ({ className }: GuestSelectorProps) => {
           <div className="flex items-center justify-between">
             <div>
               <p className="font-medium">Children</p>
-              <p className="text-sm text-gray-500">Ages 2-12</p>
+              <p className="text-sm text-gray-500 dark:text-gray-300">Ages 2-12</p>
             </div>
             <div className="flex items-center space-x-3">
               <Button 
