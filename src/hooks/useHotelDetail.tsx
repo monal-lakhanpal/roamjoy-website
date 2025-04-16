@@ -24,8 +24,18 @@ export const useHotelDetail = (id: string | undefined) => {
   }, [id, navigate]);
 
   const handleBookNow = (roomId: string) => {
-    // Store selected room and navigate to booking page
-    navigate(`/booking/${hotel?.id}?roomId=${roomId}`);
+    // Get check-in and check-out dates from session storage if available
+    const checkInDate = sessionStorage.getItem('checkInDate');
+    const checkOutDate = sessionStorage.getItem('checkOutDate');
+    
+    // Build query parameters
+    const queryParams = new URLSearchParams();
+    if (roomId) queryParams.set('roomId', roomId);
+    if (checkInDate) queryParams.set('checkIn', checkInDate);
+    if (checkOutDate) queryParams.set('checkOut', checkOutDate);
+    
+    // Navigate to booking page with parameters
+    navigate(`/booking/${hotel?.id}?${queryParams.toString()}`);
   };
 
   return {

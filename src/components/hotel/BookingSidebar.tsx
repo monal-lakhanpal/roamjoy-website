@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Calendar, Users } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { format } from "date-fns";
+import { format, differenceInDays } from "date-fns";
 import {
   Popover,
   PopoverContent,
@@ -26,6 +26,10 @@ const BookingSidebar = ({ onBookNow, defaultRoomId, initialDate }: BookingSideba
     initialDateObj ? new Date(initialDateObj.setDate(initialDateObj.getDate() + 1)) : undefined
   );
   const [guests, setGuests] = useState(1);
+
+  // Calculate number of nights
+  const numberOfNights = checkInDate && checkOutDate ? 
+    Math.max(1, differenceInDays(checkOutDate, checkInDate)) : 1;
 
   const handleBookNow = () => {
     if (checkInDate && checkOutDate) {
@@ -148,7 +152,7 @@ const BookingSidebar = ({ onBookNow, defaultRoomId, initialDate }: BookingSideba
           <p>* Prices may vary based on dates and availability</p>
           {checkInDate && checkOutDate && (
             <p className="mt-2 text-zostel-teal font-medium">
-              {Math.round((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24))} night stay
+              {numberOfNights} night{numberOfNights > 1 ? 's' : ''} stay
             </p>
           )}
         </div>
