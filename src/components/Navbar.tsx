@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import AuthModal from './AuthModal';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +73,8 @@ const Navbar = () => {
               </Link>
             )}
             
+            <ThemeToggle />
+            
             {user ? (
               <div className="flex items-center space-x-4">
                 <span className="text-zostel-navy dark:text-white">Hi, {user.name}</span>
@@ -102,18 +105,21 @@ const Navbar = () => {
             )}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button 
-            aria-label="Toggle Menu"
-            className="md:hidden flex items-center z-50" 
-            onClick={toggleMenu}
-          >
-            {isOpen ? (
-              <X className="w-6 h-6 text-zostel-navy dark:text-white" />
-            ) : (
-              <Menu className="w-6 h-6 text-zostel-navy dark:text-white" />
-            )}
-          </button>
+          {/* Mobile Menu Button with Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-3">
+            <ThemeToggle />
+            <button 
+              aria-label="Toggle Menu"
+              className="flex items-center z-50" 
+              onClick={toggleMenu}
+            >
+              {isOpen ? (
+                <X className="w-6 h-6 text-zostel-navy dark:text-white" />
+              ) : (
+                <Menu className="w-6 h-6 text-zostel-navy dark:text-white" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}

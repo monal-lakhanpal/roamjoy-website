@@ -1,8 +1,8 @@
 
-import { useState } from 'react';
-import { Calendar, Users } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Calendar as CalendarIcon, Users } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { format, differenceInDays } from "date-fns";
+import { format, differenceInDays, addDays } from "date-fns";
 import {
   Popover,
   PopoverContent,
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/popover";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 interface BookingSidebarProps {
   onBookNow: (roomId: string) => void;
@@ -23,7 +24,7 @@ const BookingSidebar = ({ onBookNow, defaultRoomId, initialDate }: BookingSideba
   
   const [checkInDate, setCheckInDate] = useState<Date | undefined>(initialDateObj);
   const [checkOutDate, setCheckOutDate] = useState<Date | undefined>(
-    initialDateObj ? new Date(initialDateObj.setDate(initialDateObj.getDate() + 1)) : undefined
+    initialDateObj ? addDays(initialDateObj, 1) : undefined
   );
   const [guests, setGuests] = useState(1);
 
@@ -31,19 +32,23 @@ const BookingSidebar = ({ onBookNow, defaultRoomId, initialDate }: BookingSideba
   const numberOfNights = checkInDate && checkOutDate ? 
     Math.max(1, differenceInDays(checkOutDate, checkInDate)) : 1;
 
+  // Save check-in and check-out dates to session storage when they change
+  useEffect(() => {
+    if (checkInDate) {
+      sessionStorage.setItem('checkInDate', checkInDate.toISOString());
+    }
+    if (checkOutDate) {
+      sessionStorage.setItem('checkOutDate', checkOutDate.toISOString());
+    }
+  }, [checkInDate, checkOutDate]);
+
   const handleBookNow = () => {
     if (checkInDate && checkOutDate) {
       onBookNow(defaultRoomId);
     } else {
-      alert("Please select check-in and check-out dates");
+      toast.error("Please select check-in and check-out dates");
     }
   };
-
-  // Calculate minimum check-out date (day after check-in date)
-  const minCheckOutDate = checkInDate ? new Date(checkInDate) : new Date();
-  if (minCheckOutDate && checkInDate) {
-    minCheckOutDate.setDate(checkInDate.getDate() + 1);
-  }
 
   return (
     <div className="sticky top-28 bg-white dark:bg-zostel-charcoal border border-gray-200 dark:border-gray-800 rounded-lg p-6 shadow-sm">
@@ -62,7 +67,7 @@ const BookingSidebar = ({ onBookNow, defaultRoomId, initialDate }: BookingSideba
                   !checkInDate && "text-gray-500 dark:text-gray-400"
                 )}
               >
-                <Calendar className="mr-2 h-4 w-4" />
+                <CalendarIcon className="mr-2 h-4 w-4" />
                 {checkInDate ? format(checkInDate, "PPP") : <span>Select date</span>}
               </Button>
             </PopoverTrigger>
@@ -100,7 +105,7 @@ const BookingSidebar = ({ onBookNow, defaultRoomId, initialDate }: BookingSideba
                 )}
                 disabled={!checkInDate}
               >
-                <Calendar className="mr-2 h-4 w-4" />
+                <CalendarIcon className="mr-2 h-4 w-4" />
                 {checkOutDate ? format(checkOutDate, "PPP") : <span>Select date</span>}
               </Button>
             </PopoverTrigger>

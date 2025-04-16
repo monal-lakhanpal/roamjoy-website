@@ -1,12 +1,21 @@
+
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Info, Star, MinusCircle, PlusCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Info, Star, MinusCircle, PlusCircle, ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { toast } from "sonner";
 import { useAuth } from '@/hooks/useAuth';
+import { format, differenceInDays } from "date-fns";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
 
 // Get room types based on hotel id
 const getRoomTypes = (hotelId: number) => {
@@ -140,16 +149,21 @@ const BookingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [selectedRoomType, setSelectedRoomType] = useState<string | null>(null);
-  const [guests, setGuests] = useState(1); // Changed default to 1 as requested
+  const [guests, setGuests] = useState(1);
   const [roomTypes, setRoomTypes] = useState<any[]>([]);
   const [hotel, setHotel] = useState<any>(null);
-  const [bookingDate, setBookingDate] = useState<string>('');
+  const [checkInDate, setCheckInDate] = useState<Date | undefined>(undefined);
+  const [checkOutDate, setCheckOutDate] = useState<Date | undefined>(undefined);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Calculate number of nights
+  const numberOfNights = checkInDate && checkOutDate ? 
+    Math.max(1, differenceInDays(checkOutDate, checkInDate)) : 1;
   
   // Calculation values
   const selectedRoom = roomTypes.find(room => room.id === selectedRoomType);
   const basePrice = selectedRoom ? selectedRoom.price : 0;
-  const subtotal = basePrice * guests;
+  const subtotal = basePrice * numberOfNights * guests;
   const taxRate = 0.18; // 18% GST
   const tax = Math.round(subtotal * taxRate);
   const discount = user ? Math.round(subtotal * 0.1) : 0; // 10% discount for logged in users
@@ -163,14 +177,26 @@ const BookingPage = () => {
       return;
     }
     
-    const searchDate = sessionStorage.getItem('searchDate');
-    if (searchDate) {
-      setBookingDate(searchDate);
+    // Set default dates if not already set
+    const storedCheckInDate = sessionStorage.getItem('checkInDate');
+    const storedCheckOutDate = sessionStorage.getItem('checkOutDate');
+    
+    if (storedCheckInDate) {
+      setCheckInDate(new Date(storedCheckInDate));
     } else {
-      // Set default date to tomorrow if not selected
+      // Default to tomorrow
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
-      setBookingDate(tomorrow.toISOString().split('T')[0]);
+      setCheckInDate(tomorrow);
+    }
+    
+    if (storedCheckOutDate) {
+      setCheckOutDate(new Date(storedCheckOutDate));
+    } else {
+      // Default to day after tomorrow
+      const dayAfterTomorrow = new Date();
+      dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+      setCheckOutDate(dayAfterTomorrow);
     }
     
     // Get hotel details and room types
@@ -179,10 +205,18 @@ const BookingPage = () => {
     const availableRoomTypes = getRoomTypes(Number(hotelId));
     setRoomTypes(availableRoomTypes);
     
-    return () => {
-      // Cleanup if needed
-    };
   }, [hotelId, navigate]);
+  
+  useEffect(() => {
+    // Store selected dates in session storage
+    if (checkInDate) {
+      sessionStorage.setItem('checkInDate', checkInDate.toISOString());
+    }
+    
+    if (checkOutDate) {
+      sessionStorage.setItem('checkOutDate', checkOutDate.toISOString());
+    }
+  }, [checkInDate, checkOutDate]);
   
   const handleRoomTypeSelect = (roomTypeId: string) => {
     setSelectedRoomType(roomTypeId);
@@ -206,13 +240,20 @@ const BookingPage = () => {
       return;
     }
     
+    if (!checkInDate || !checkOutDate) {
+      toast.error("Please select check-in and check-out dates");
+      return;
+    }
+    
     // Create booking object
     const booking = {
       id: `booking_${Math.random().toString(36).substring(2, 15)}`,
       hotelId: hotelId,
       hotelName: hotel.name,
       roomType: selectedRoom.name,
-      date: bookingDate,
+      checkInDate: checkInDate.toISOString(),
+      checkOutDate: checkOutDate.toISOString(),
+      numberOfNights,
       guests,
       subtotal,
       tax,
@@ -402,24 +443,96 @@ const BookingPage = () => {
                 <h2 className="text-2xl font-bold mb-4">Booking Summary</h2>
                 
                 <div className="space-y-4 mb-6">
-                  <div className="flex justify-between">
-                    <div className="text-gray-600 dark:text-gray-300">Check-in Date</div>
-                    <div>{new Date(bookingDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+                  {/* Check-in Date */}
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">Check-in Date</label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !checkInDate && "text-gray-500 dark:text-gray-400"
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {checkInDate ? format(checkInDate, "PPP") : <span>Select date</span>}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={checkInDate}
+                          onSelect={(date) => {
+                            setCheckInDate(date);
+                            // If check-out date is before new check-in date, adjust it
+                            if (checkOutDate && date && checkOutDate <= date) {
+                              const newCheckOutDate = new Date(date);
+                              newCheckOutDate.setDate(date.getDate() + 1);
+                              setCheckOutDate(newCheckOutDate);
+                            }
+                          }}
+                          disabled={(date) => date < new Date()}
+                          initialFocus
+                          className={cn("p-3 pointer-events-auto")}
+                        />
+                      </PopoverContent>
+                    </Popover>
                   </div>
+                  
+                  {/* Check-out Date */}
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">Check-out Date</label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !checkOutDate && "text-gray-500 dark:text-gray-400"
+                          )}
+                          disabled={!checkInDate}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {checkOutDate ? format(checkOutDate, "PPP") : <span>Select date</span>}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={checkOutDate}
+                          onSelect={setCheckOutDate}
+                          disabled={(date) => 
+                            !date || 
+                            (checkInDate ? date <= checkInDate : date <= new Date())
+                          }
+                          initialFocus
+                          className={cn("p-3 pointer-events-auto")}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+
                   <div className="flex justify-between">
                     <div className="text-gray-600 dark:text-gray-300">Room Type</div>
                     <div>{selectedRoom ? selectedRoom.name : '—'}</div>
                   </div>
+                  
                   <div className="flex justify-between">
                     <div className="text-gray-600 dark:text-gray-300">Guests</div>
                     <div>{guests}</div>
+                  </div>
+                  
+                  <div className="flex justify-between">
+                    <div className="text-gray-600 dark:text-gray-300">Duration</div>
+                    <div>{numberOfNights} night{numberOfNights > 1 ? 's' : ''}</div>
                   </div>
                 </div>
                 
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mb-6">
                   <div className="flex justify-between mb-2">
                     <div className="text-gray-600 dark:text-gray-300">Room Charge</div>
-                    <div>₹{basePrice} × {guests} = ₹{subtotal}</div>
+                    <div>₹{basePrice} × {guests} × {numberOfNights} = ₹{subtotal}</div>
                   </div>
                   <div className="flex justify-between mb-2">
                     <div className="text-gray-600 dark:text-gray-300">GST (18%)</div>
