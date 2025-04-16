@@ -11,7 +11,7 @@ const teamMembers = [
     id: 1,
     name: 'Dharmveer Singh',
     role: 'Founder & CEO',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+    image: 'public/lovable-uploads/fbbd8b85-a68d-4e73-b03c-01ac28240cb7.png', // Using the uploaded image
     bio: 'Passionate traveler and entrepreneur who founded Holidayz with a vision to revolutionize the backpacking experience in India.'
   },
   {

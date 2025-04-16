@@ -28,7 +28,7 @@ const destinations = [
     id: 3,
     name: 'Rishikesh',
     location: 'Laxman Jhula',
-    image: 'https://images.unsplash.com/photo-1584732200355-486c3f73a7cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    image: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     description: 'Find spiritual connection and adventure in the yoga capital of the world.',
     price: 'Starts at ₹499/night'
   },
@@ -44,7 +44,7 @@ const destinations = [
     id: 5,
     name: 'Varanasi',
     location: 'Assi Ghat',
-    image: 'https://images.unsplash.com/photo-1561361058-c12e09083d88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: 'https://images.unsplash.com/photo-1565074943747-9283709c3d88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
     description: 'Experience the spiritual heart of India on the banks of the Ganges.',
     price: 'Starts at ₹449/night'
   },
