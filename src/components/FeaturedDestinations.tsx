@@ -7,14 +7,6 @@ import DestinationCard from './DestinationCard';
 
 const destinations = [
   {
-    id: '1',
-    name: 'Holidayz Manali',
-    location: 'Manali, Himachal Pradesh',
-    image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    price: 999,
-    rating: 4.8
-  },
-  {
     id: '2',
     name: 'Holidayz Goa',
     location: 'Anjuna, Goa',
@@ -23,12 +15,12 @@ const destinations = [
     rating: 4.7
   },
   {
-    id: '3',
-    name: 'Holidayz Jaipur',
-    location: 'Jaipur, Rajasthan',
-    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    price: 799,
-    rating: 4.5
+    id: '1',
+    name: 'Holidayz Manali',
+    location: 'Manali, Himachal Pradesh',
+    image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    price: 999,
+    rating: 4.8
   },
   {
     id: '4',
@@ -39,12 +31,12 @@ const destinations = [
     rating: 4.6
   },
   {
-    id: '5',
-    name: 'Holidayz Udaipur',
-    location: 'Udaipur, Rajasthan',
-    image: 'https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
-    price: 1099,
-    rating: 4.9
+    id: '3',
+    name: 'Holidayz Jaipur',
+    location: 'Jaipur, Rajasthan',
+    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    price: 799,
+    rating: 4.5
   },
   {
     id: '6',
@@ -55,7 +47,15 @@ const destinations = [
     rating: 4.4
   },
   {
-    id: '7',
+    id: '5',
+    name: 'Holidayz Udaipur',
+    location: 'Udaipur, Rajasthan',
+    image: 'https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
+    price: 1099,
+    rating: 4.9
+  },
+  {
+    id: '8',
     name: 'Holidayz Mumbai',
     location: 'Mumbai, Maharashtra',
     image: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
@@ -63,7 +63,7 @@ const destinations = [
     rating: 4.3
   },
   {
-    id: '8',
+    id: '7',
     name: 'Holidayz Kerala',
     location: 'Kochi, Kerala',
     image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
