@@ -1,5 +1,5 @@
 
-import { Wifi, Coffee, Utensils, MapPin, Home, Mountains, Snowflake, Book } from 'lucide-react';
+import { Wifi, Coffee, Utensils, MapPin, Home, Mountain, Snowflake, Book } from 'lucide-react';
 
 interface AmenitiesListProps {
   amenities: string[];
@@ -11,7 +11,7 @@ const AmenitiesList = ({ amenities }: AmenitiesListProps) => {
     if (amenity.includes("WiFi")) return <Wifi className="w-5 h-5 mr-2 text-zostel-teal" />;
     if (amenity.includes("Kitchen")) return <Utensils className="w-5 h-5 mr-2 text-zostel-teal" />;
     if (amenity.includes("Cafe")) return <Coffee className="w-5 h-5 mr-2 text-zostel-teal" />;
-    if (amenity.includes("Views")) return <Mountains className="w-5 h-5 mr-2 text-zostel-teal" />;
+    if (amenity.includes("Views")) return <Mountain className="w-5 h-5 mr-2 text-zostel-teal" />;
     if (amenity.includes("Tour")) return <MapPin className="w-5 h-5 mr-2 text-zostel-teal" />;
     if (amenity.includes("Reception")) return <Home className="w-5 h-5 mr-2 text-zostel-teal" />;
     if (amenity.includes("Air")) return <Snowflake className="w-5 h-5 mr-2 text-zostel-teal" />;
