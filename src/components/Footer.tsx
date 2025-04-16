@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: About */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">ZOSTEL</h3>
+            <h3 className="text-2xl font-bold mb-4">HOLIDAYZ</h3>
             <p className="text-gray-300 mb-4">
               India's first chain of backpacker hostels providing unique, social and affordable travel experiences.
             </p>
@@ -97,7 +97,7 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-zostel-teal flex-shrink-0 mt-1" />
                 <span className="text-gray-300">
-                  Zostel Hospitality Pvt. Ltd.<br />
+                HOLIDAYZ Hospitality Pvt. Ltd.<br />
                   H-19, Sector 63,<br />
                   Noida, UP, India
                 </span>
@@ -111,7 +111,7 @@ const Footer = () => {
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-zostel-teal flex-shrink-0" />
                 <a href="mailto:hello@zostel.com" className="text-gray-300 hover:text-zostel-teal transition-colors">
-                  hello@zostel.com
+                  hello@holidayz.com
                 </a>
               </li>
             </ul>
@@ -142,7 +142,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} Zostel. All rights reserved.
+            &copy; {currentYear} HOLIDAYZ. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 text-sm hover:text-zostel-teal transition-colors">
