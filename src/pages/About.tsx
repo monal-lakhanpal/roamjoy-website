@@ -180,7 +180,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/9d5d9392-2b5d-4cb3-81dc-81c3df908b64.png" 
+                  src="https://images.unsplash.com/photo-1640531005390-38bd92755d6a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                   alt="Dharmveer Singh" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -200,8 +200,8 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/40e4e3d8-4de2-465a-8152-f12e84608102.png" 
-                  alt="Priya Sharma" 
+                  src="https://images.unsplash.com/photo-1558222218-b7b54eede3f3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  alt="Robin Sharma" 
                   className="w-full h-full object-cover object-center"
                 />
               </div>
@@ -220,7 +220,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/0d47e80d-77d8-46b4-ba75-19ccc0fee49e.png" 
+                  src="https://images.unsplash.com/photo-1571935822631-26120f8d26d7?q=80&w=1512&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                   alt="Arjun Mehta" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -240,7 +240,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/d4790ea0-d076-43d9-9c1c-757b2b00f2d0.png" 
+                  src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                   alt="Meera Patel" 
                   className="w-full h-full object-cover object-center"
                 />
