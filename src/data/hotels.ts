@@ -1,3 +1,4 @@
+
 // Hotel data types
 export interface Room {
   id: string;
@@ -176,7 +177,7 @@ export const hotels: Hotel[] = [
     location: "Assi Ghat, Varanasi",
     description: "Immerse yourself in the spiritual heart of India at Holidayz Varanasi. Our riverside hostel offers panoramic views of the Ganges and is a perfect base to explore the ancient city's mystical charm.",
     images: [
-      "https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1561361058-c24cecce292a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1566138884885-9c5762b4f4ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "https://images.unsplash.com/photo-1584360459531-24a5d0fdf10d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
       "https://images.unsplash.com/photo-1627894006066-b9384f8a13a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
