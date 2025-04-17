@@ -1,6 +1,6 @@
 
 // Re-export all hotel types and data from the restructured files
-export { Room, Hotel } from './types/hotel';
+export type { Room, Hotel } from './types/hotel';
 export { hotels } from './hotels/index';
 
 // Re-export individual hotels if needed 

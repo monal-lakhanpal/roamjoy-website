@@ -181,7 +181,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/013a1995-5835-4b48-8d2b-7cb0223b1754.png" 
+                  src="public/lovable-uploads/3c04e5fb-7f94-41a5-a545-65aa9af67e52.png" 
                   alt="Dharmveer Singh" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -201,7 +201,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/9e1ed3ec-d1f9-433d-adbb-ff4889f6c666.png" 
+                  src="public/lovable-uploads/c62fb902-91e1-4173-b2ab-26978535e617.png" 
                   alt="Priya Sharma" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -221,7 +221,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/97d60f96-773d-4073-b3c1-642edb7cef9c.png" 
+                  src="public/lovable-uploads/47f2c93d-b6fe-4f69-a107-b2a5f516db81.png" 
                   alt="Arjun Mehta" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -241,7 +241,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/328c402f-578f-4afd-8c14-484f9c6874b1.png" 
+                  src="public/lovable-uploads/a0da0e6c-aa6f-49dd-8427-1f84cacb21c8.png" 
                   alt="Meera Patel" 
                   className="w-full h-full object-cover object-center"
                 />
