@@ -35,13 +35,15 @@ const destinations = [
     id: 4,
     name: 'Jaipur',
     location: 'Old City',
+    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    description: 'Explore the rich heritage and vibrant culture of the Pink City.',
     price: 'Starts at ₹649/night'
   },
   {
     id: 5,
     name: 'Varanasi',
     location: 'Assi Ghat',
-    image: 'https://images.unsplash.com/photo-1596097825168-c9b773f404ff?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://images.unsplash.com/photo-1596097825168-c9b773f404ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     description: 'Experience the spiritual heart of India on the banks of the Ganges.',
     price: 'Starts at ₹449/night'
   },
