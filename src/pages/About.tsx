@@ -181,7 +181,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                  src="public/lovable-uploads/013a1995-5835-4b48-8d2b-7cb0223b1754.png" 
                   alt="Dharmveer Singh" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -201,7 +201,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                  src="public/lovable-uploads/9e1ed3ec-d1f9-433d-adbb-ff4889f6c666.png" 
                   alt="Priya Sharma" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -221,7 +221,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                  src="public/lovable-uploads/97d60f96-773d-4073-b3c1-642edb7cef9c.png" 
                   alt="Arjun Mehta" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -241,7 +241,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" 
+                  src="public/lovable-uploads/328c402f-578f-4afd-8c14-484f9c6874b1.png" 
                   alt="Meera Patel" 
                   className="w-full h-full object-cover object-center"
                 />
