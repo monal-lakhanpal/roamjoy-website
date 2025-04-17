@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -181,7 +180,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/3c04e5fb-7f94-41a5-a545-65aa9af67e52.png" 
+                  src="public/lovable-uploads/9d5d9392-2b5d-4cb3-81dc-81c3df908b64.png" 
                   alt="Dharmveer Singh" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -201,7 +200,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/c62fb902-91e1-4173-b2ab-26978535e617.png" 
+                  src="public/lovable-uploads/40e4e3d8-4de2-465a-8152-f12e84608102.png" 
                   alt="Priya Sharma" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -221,7 +220,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/47f2c93d-b6fe-4f69-a107-b2a5f516db81.png" 
+                  src="public/lovable-uploads/0d47e80d-77d8-46b4-ba75-19ccc0fee49e.png" 
                   alt="Arjun Mehta" 
                   className="w-full h-full object-cover object-center"
                 />
@@ -241,7 +240,7 @@ const AboutPage = () => {
             >
               <div className="h-64 overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/a0da0e6c-aa6f-49dd-8427-1f84cacb21c8.png" 
+                  src="public/lovable-uploads/d4790ea0-d076-43d9-9c1c-757b2b00f2d0.png" 
                   alt="Meera Patel" 
                   className="w-full h-full object-cover object-center"
                 />
