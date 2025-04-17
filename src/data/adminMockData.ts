@@ -224,7 +224,7 @@ export const destinationsData: DestinationDetail[] = [
     name: 'Varanasi',
     location: 'Assi Ghat',
     description: 'Experience the spiritual heart of India on the banks of the Ganges.',
-    image: 'https://images.unsplash.com/photo-1565074943747-9283709c3d88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+    image: 'https://images.unsplash.com/photo-1596097825168-c9b773f404ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     price: 'Starts at ₹449/night',
     hotels: 4,
     active: true
